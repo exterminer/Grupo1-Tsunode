@@ -37,6 +37,7 @@ export const UserProvider = ({children}: IUserProviderProps)=> {
             localStorage.setItem("@TOKEN", data.accessToken);
             localStorage.setItem("@USERID", JSON.stringify(data.user.id));
             console.log(data)
+            console.log(data)
             // navigate("/Dashboard");
         } catch (error) {
             console.log(error);
