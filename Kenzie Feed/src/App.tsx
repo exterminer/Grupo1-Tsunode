@@ -1,11 +1,14 @@
 import { RouterMain } from "./routes/routes";
 import { NewsProvider } from "./providers/newsContext.tsx";
+import "../index.css";
 function App() {
   return (
     <>
-      <NewsProvider>
-        <RouterMain />
-      </NewsProvider>
+      <div className="bg-white h-screen">
+        <NewsProvider>
+          <RouterMain />
+        </NewsProvider>
+      </div>
     </>
   );
 }
