@@ -1,15 +1,16 @@
-import { useState } from "react";
-
-import "./App.css";
-
-function App() {
+import "./GlobalStyles.css"
+import { RoutesMain } from "./routes/RoutesMain"
 
 
-  return
+export const App = () => {
 
- <div><h1>teste</h1></div>
-    
-    
+  return (
+    <>
+      <div className="App">
+          <RoutesMain />
+      </div>
+    </>
+  )
 }
 
-export default App;
+
