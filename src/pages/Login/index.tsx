@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import  img  from "../../assets/LoginImg.png"
+
 import { Input } from "../../components/Input";
 import { UserContext } from "../../providers/UserContext/UserContext";
 // import { Header } from ;
@@ -24,12 +26,12 @@ export const Login = ()=> {
     return (
         <div>
             {/* <Header /> */}
-            <main className="">
-                <img src="Imagem grande NoteBook caneca e caderno" alt="" />
-                <div className="text-yellow-400">
+            <div className="flex">
+                <img src={img} alt="Imagem grande NoteBook caneca e caderno" className="w-581px h-662px"/>
+                <div className="">
                     <h1 className="">Acesse o KenzieFeed</h1>
-                    <p className="text-3xl font-bold underline">Preencha os campos corretamente para fazer login</p>
-                    <form onSubmit={handleSubmit(submit)}>
+                    <p className="">Preencha os campos corretamente para fazer login</p>
+                    <form onSubmit={handleSubmit(submit)} className="flex-column text-blue-400">
                         <Input label="E-mail" type="email" placeholder="E-mail" error={errors.email} {...register("email")}/>
                         <Input label="Senha" type="password" placeholder="Senha" error={errors.password} {...register("password")}/>
                         <button type="submit">Entrar</button>
@@ -37,7 +39,7 @@ export const Login = ()=> {
                     <p>Não é cadastrado?</p>
                     <Link to="/Register">Cadastre-se</Link>
                 </div>
-            </main>
+            </div>
             {/* <Footer /> */}
         </div>
     )
