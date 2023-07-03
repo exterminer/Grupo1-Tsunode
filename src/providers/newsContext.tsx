@@ -11,6 +11,7 @@ interface Ilike {
 }
 
 interface INews {
+  image: string;
   title: string;
   description: string;
   owner: string;

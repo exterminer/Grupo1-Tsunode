@@ -8,15 +8,15 @@ function App() {
   const { loading } = useContext(UserContext);
 
   return (
-    <>
+    <div className="w-full max-w-[1200px] mx-auto">
 
       <NewsProvider>
-        <main className="bg-red-300">
+        <main >
         {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
         </main>
       </NewsProvider>
 
-    </>
+    </div>
   )
 }
 

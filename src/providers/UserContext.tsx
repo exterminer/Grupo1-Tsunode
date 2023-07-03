@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../services/api"
+import { api } from "../service/api"
 import { useEffect } from "react";
 
 export const UserContext = createContext({})
