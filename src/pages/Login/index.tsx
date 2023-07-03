@@ -24,11 +24,11 @@ export const Login = ()=> {
     return (
         <div>
             {/* <Header /> */}
-            <main>
+            <main className="">
                 <img src="Imagem grande NoteBook caneca e caderno" alt="" />
-                <div>
-                    <h1>Acesse o KenzieFeed</h1>
-                    <p>Preencha os campos corretamente para fazer login</p>
+                <div className="text-yellow-400">
+                    <h1 className="">Acesse o KenzieFeed</h1>
+                    <p className="text-3xl font-bold underline">Preencha os campos corretamente para fazer login</p>
                     <form onSubmit={handleSubmit(submit)}>
                         <Input label="E-mail" type="email" placeholder="E-mail" error={errors.email} {...register("email")}/>
                         <Input label="Senha" type="password" placeholder="Senha" error={errors.password} {...register("password")}/>
