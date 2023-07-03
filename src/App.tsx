@@ -2,7 +2,7 @@ import { useContext } from "react"
 import "./index.css"
 import { RoutesMain } from "./routes/routes.tsx";
 import { UserContext } from "./providers/UserContext/UserContext"
-
+import "./index.css"
 function App() {
   const { loading } = useContext(UserContext);
 
