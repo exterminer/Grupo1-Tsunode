@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { api } from "../service";
+import { api } from "../service/api";
 
 interface INewsContext {
   newslist: INews[];
