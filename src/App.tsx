@@ -6,9 +6,9 @@ import "./index.css"
 function App() {
   const { loading } = useContext(UserContext);
 
-  return(
+  return (
     <>
-      <main className="bg-red-300">
+      <main className="">
       {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
       </main>
     </>
