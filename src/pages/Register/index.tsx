@@ -10,7 +10,7 @@ import { UserContext } from "../../providers/UserContext/UserContext";
 import { registerFormSchema } from "./registerFormSchema";
 import { TRegisterForm } from "./registerFormSchema";
 
-export const Register = ({})=> {
+export const Register = ()=> {
     const { register, handleSubmit, formState: { errors }} = useForm<TRegisterForm>({
         resolver: zodResolver(registerFormSchema)
     });
