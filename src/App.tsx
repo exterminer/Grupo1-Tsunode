@@ -7,13 +7,15 @@ import { NewsProvider } from "./providers/newsContext.tsx";
 function App() {
   const { loading } = useContext(UserContext);
 
-  return(
+  return (
     <>
+
       <NewsProvider>
         <main className="bg-red-300">
         {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
         </main>
       </NewsProvider>
+
     </>
   )
 }
