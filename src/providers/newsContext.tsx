@@ -17,6 +17,7 @@ interface INews {
   userId: number;
   id: number;
   likes: Ilike[];
+  image?: string; 
 }
 
 export const NewsContext = createContext({} as INewsContext);
@@ -28,7 +29,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
   const getNews = async () => {
     try {
       const response = await api.get("/posts?_embed=likes");
-      console.log(response.data)
+      // console.log(response.data)
       setNews(response.data);
     } catch (error) {
       console.log(error);

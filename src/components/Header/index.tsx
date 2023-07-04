@@ -9,3 +9,13 @@ export const Header = () => {
 
     )
 }
+
+export const HeaderDash = () => {
+    return (
+<div>
+    <img src={logo} alt="Logo Kenzie Feed" />
+    <button>Dashboard</button>
+</div>
+
+    )
+}

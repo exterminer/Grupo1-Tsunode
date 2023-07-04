@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../services/api"
+import { api } from "../service/api"
 import { useEffect } from "react";
 
 export const UserContext = createContext({})
@@ -22,7 +22,7 @@ export const UserProvider = ({children}) => {
     }
 
     return(
-        <UserContext.Provider value = {{showNews, setNews}}>
+        <UserContext.Provider value = {{showNews, news, setNews}}>
             {children}
         </UserContext.Provider>
     )
