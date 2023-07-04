@@ -1,13 +1,31 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { NewsContext } from "../../providers/newsContext";
 interface NewsProps {
   key: number;
   image: string;
   title: string;
   owner: string;
+  description: string;
 }
 
-export const News: React.FC<NewsProps> = ({ image, title, owner }) => {
+export const News: React.FC<NewsProps> = ({
+  image,
+  title,
+  owner,
+  description,
+}) => {
+  function handleNews() {
+    const { setCurrentNews } = useContext(NewsContext);
+    const newsData = {
+      image,
+      title,
+      owner,
+      description,
+    };
+    setCurrentNews(newsData);
+  }
   return (
     <div className="flex">
       <li className="w-full max-w-[573px] min-w-250">
@@ -20,8 +38,9 @@ export const News: React.FC<NewsProps> = ({ image, title, owner }) => {
         </h3>
 
         <Link
+          onClick={handleNews}
           className="text-blue text-base font-inter font-normal"
-          to={"/"}
+          // to={"/internpage"}
         >
           Leia mais{" "}
         </Link>

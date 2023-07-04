@@ -24,7 +24,7 @@ export const NewsContext = createContext({} as INewsContext);
 
 export const NewsProvider = ({ children }: { children: ReactNode }) => {
   const [news, setNews] = useState<INews[]>([]);
-  const [currentNews, setCurrentNews] = useState<INews | null>(null);
+  const [currentNews, setCurrentNews] = useState<INews | null>();
 
   const getNews = async () => {
     try {

@@ -24,6 +24,7 @@ export const AllNews = () => {
                 title={news.title}
                 owner={news.owner}
                 key={news.id}
+                description={news.description}
               />
             );
           })}
