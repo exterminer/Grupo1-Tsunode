@@ -1,13 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NewsContext } from "../../providers/NewsContext/NewsContext";
+import { useContext } from "react";
+
 interface NewsProps {
   key: number;
   image: string;
   title: string;
   owner: string;
+  id: number;
 }
 
-export const News: React.FC<NewsProps> = ({ image, title, owner }) => {
+function handleNavigateInternPage(
+  id: string,
+  setCurrentNews: React.Dispatch<React.SetStateAction<string>>
+) {
+  setCurrentNews(id);
+}
+
+export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
+  const { setCurrentID } = useContext(NewsContext);
   return (
     <div className="flex">
       <li className="w-full max-w-[573px] min-w-250">
@@ -20,8 +32,9 @@ export const News: React.FC<NewsProps> = ({ image, title, owner }) => {
         </h3>
 
         <Link
+          onClick={() => handleNavigateInternPage(String(id), setCurrentID)}
           className="text-blue text-base font-inter font-normal"
-          to={"/"}
+          to={"/internpage"}
         >
           Leia mais{" "}
         </Link>

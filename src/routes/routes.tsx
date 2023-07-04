@@ -6,6 +6,7 @@ import { HomeNews } from "../pages/HomeNews";
 import { AllNews } from "../pages/AllNews/AllNews";
 import { PublicRoutes } from "../components/PublicRoutes";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { InternPage } from "../pages/internpage/internpage";
 
 export const RoutesMain = () => {
 
@@ -16,6 +17,7 @@ export const RoutesMain = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
+        <Route path="/internpage" element={<InternPage/>} />
       </Route>
       <Route>
 
