@@ -1,10 +1,14 @@
 import { Route, Routes } from "react-router-dom";
+
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
-import { AllNews } from "../pages/AllNews/AllNews";
 import { HomeNews } from "../pages/HomeNews";
+import { AllNews } from "../pages/AllNews/AllNews";
+import { PublicRoutes } from "../components/PublicRoutes";
+import { ProtectedRoutes } from "../components/ProtectedRoutes";
 
 export const RoutesMain = () => {
+
   return (
     <Routes>
       <Route>
@@ -13,7 +17,9 @@ export const RoutesMain = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
       </Route>
-      <Route></Route>
+      <Route>
+
+      </Route>
     </Routes>
   );
 };

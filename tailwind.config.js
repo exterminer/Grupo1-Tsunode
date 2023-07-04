@@ -13,7 +13,7 @@ export default {
       'blue': '#55A3FF',
       
     },
-
+    
     extend: {},
   },
   plugins: [],
