@@ -24,7 +24,7 @@ export const Login = ()=> {
     }
 
     return (
-        <div className="">
+        <div className="min-h-[100vh]">
             <Header />
             <div className="flex justify-start gap-x-24 items-center py-[16px] px-[20px] h-full pt-20">
                 <img src={img} alt="Imagem grande NoteBook caneca e caderno" className="w-[581px] h-[682px]"/>

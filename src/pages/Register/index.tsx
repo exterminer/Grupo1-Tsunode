@@ -24,7 +24,7 @@ export const Register = ()=> {
     }
 
     return (
-        <div>
+        <div className="min-h-[100vh]">
             <Header />
             <div className="flex py-[16px] px-[20px] gap-[80px]">
                 <Link to="/login" className="flex justify-center items-center gap-3 bg-white w-[107px] h-[43px] border-[1px] border-blue rounded">
