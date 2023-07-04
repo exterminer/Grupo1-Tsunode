@@ -1,7 +1,7 @@
-import notebook from "../../assets/notebook.png"
-import { Footer } from "../../components/Footer"
-import { Header } from "../../components/Header"
-import { LastNews } from "./LastNews"
+import { LastNews } from "./LastNews";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import notebook from "../../assets/notebook.png";
 
 export const HomeNews = () => {
    
@@ -27,5 +27,4 @@ export const HomeNews = () => {
         </section>
         </>
     )
-
 }

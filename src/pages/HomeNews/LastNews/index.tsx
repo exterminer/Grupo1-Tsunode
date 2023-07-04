@@ -1,17 +1,20 @@
-import { useContext } from "react"
-import { NewsContext } from "../../../providers/newsContext"
-import { News } from "../../../components/News/news"
+import { useContext } from "react";
+import { NewsContext } from "../../../providers/NewsContext/NewsContext";
+import { News } from "../../../components/News/news";
 
 export const LastNews = () => {
-    const {newslist} = useContext(NewsContext)
+  const { newslist } = useContext(NewsContext);
 
-return (
+  return (
     <ul>
-        {newslist.map((note) => ( 
-            <News img={note.image} key = {note.id} title = {note.title} owner={note.owner}/>
-        )
-     )}
+      {newslist.map((note) => (
+        <News
+          image={note.image}
+          key={note.id}
+          title={note.title}
+          owner={note.owner}
+        />
+      ))}
     </ul>
-)
-
-}
+  );
+};

@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+import { AllNews } from "../pages/AllNews/AllNews";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
-import { AllNews } from "../pages/AllNews/AllNews";
 import { HomeNews } from "../pages/HomeNews";
 import { EditNews } from "../pages/EditNews";
 
 export const RoutesMain = () => {
+
   return (
     <Routes>
       <Route>

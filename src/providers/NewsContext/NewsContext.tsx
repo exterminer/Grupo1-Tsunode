@@ -1,24 +1,6 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { api } from "../service/api";
-
-interface INewsContext {
-  newslist: INews[];
-  setCurrentNews: React.Dispatch<React.SetStateAction<INews | null>>;
-}
-
-interface Ilike {
-  quantidade: number;
-}
-
-interface INews {
-  title: string;
-  image: string | undefined;
-  description: string;
-  owner: string;
-  userId: number;
-  id: number;
-  likes: Ilike[];
-}
+import { createContext, useState, useEffect, ReactNode } from "react";
+import { api } from "../../service/api";
+import { INewsContext, Ilike, INews } from "./@types";
 
 export const NewsContext = createContext({} as INewsContext);
 
