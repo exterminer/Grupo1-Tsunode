@@ -6,6 +6,7 @@ import { HomeNews } from "../pages/HomeNews";
 import { AllNews } from "../pages/AllNews/AllNews";
 import { PublicRoutes } from "../components/PublicRoutes";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { EditNews } from "../pages/EditNews";
 
 export const RoutesMain = () => {
 
@@ -18,7 +19,7 @@ export const RoutesMain = () => {
         <Route path="/allnews" element={<AllNews />} />
       </Route>
       <Route>
-
+      <Route path="/editnews" element={<EditNews />} />
       </Route>
     </Routes>
   );

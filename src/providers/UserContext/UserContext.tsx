@@ -1,10 +1,10 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { api } from "../../service/api";
 import { TRegisterForm } from "../../pages/Register/registerFormSchema";
-import { IUserContext, IUserProviderProps, IUser, IUserLoginResponse } from "./@types";
+import { IUserContext, IUserProviderProps, IUser, IUserLoginResponse} from "./@types";
 import { TLoginForm } from "../../pages/Login/loginFormSchema";
+
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -15,6 +15,7 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({children}: IUserProviderProps)=> {
     const [user, setUser] = useState<IUser | null>(null);
     const [loading, setLoading] = useState<true | false>(false);
+   
 
     // const currentPath = window.location.pathname;
     const navigate = useNavigate();
@@ -46,11 +47,13 @@ export const UserProvider = ({children}: IUserProviderProps)=> {
         }
     }
 
+
     const userLogout = () => {
         setUser(null);
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@USERID");
         navigate("/Home");
+
     }
 
     return(
