@@ -13,6 +13,7 @@ export const LastNews = () => {
           key={note.id}
           title={note.title}
           owner={note.owner}
+          id={note.id}
         />
       ))}
     </ul>
