@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
-
 import { api } from "../../service/api";
 import { INewsContext, Ilike, INews } from "./@types";
 

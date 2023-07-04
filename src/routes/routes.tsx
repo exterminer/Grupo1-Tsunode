@@ -1,11 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-
+import { AllNews } from "../pages/AllNews/AllNews";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { HomeNews } from "../pages/HomeNews";
-import { AllNews } from "../pages/AllNews/AllNews";
-import { PublicRoutes } from "../components/PublicRoutes";
-import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { EditNews } from "../pages/EditNews";
 
 export const RoutesMain = () => {
 
@@ -16,9 +14,10 @@ export const RoutesMain = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
+        <Route path="/editnews" element={<EditNews />} />
       </Route>
       <Route>
-
+        <Route path="/editnews" element={<EditNews />} />
       </Route>
     </Routes>
   );
