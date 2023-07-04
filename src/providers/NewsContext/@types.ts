@@ -5,7 +5,7 @@ export interface INewsContext {
 }
 
 export interface Ilike {
-  quantidade: number;
+  quantidade: number| undefined;
 }
 
 export interface INews {

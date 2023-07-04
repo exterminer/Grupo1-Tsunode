@@ -3,9 +3,10 @@ import { NewsContext } from "../../providers/NewsContext/NewsContext";
 import { useContext } from "react";
 import { News } from "../../components/News/news";
 import { Footer } from "../../components/Footer";
+import likeimg from "../../assets/likeImg.svg";
 export const InternPage = () => {
   const { CurrentNews, newslist } = useContext(NewsContext);
-  console.log(News);
+  console.log(CurrentNews?.likes);
   return (
     <div>
       <Header />
@@ -18,6 +19,24 @@ export const InternPage = () => {
           {CurrentNews?.title}
         </h1>
         <img src={CurrentNews?.image} alt="" />
+        <div className="  w-full max-w-[570px] flex justify-start">
+          {CurrentNews?.likes.length === 0 ? (
+            <div className="flex gap-[10px]">
+              <img src={likeimg} alt="" />
+              <p className="text-black text-sm font-inter font-normal">
+                Seja o primeiro a curtir{" "}
+              </p>
+            </div>
+          ) : (
+            <div className="flex gap-[10px]">
+              <img src={likeimg} alt="" />
+              <p className="text-black text-sm font-inter font-normal">
+                {CurrentNews?.likes.length} Curtidas
+              </p>
+            </div>
+          )}
+        </div>
+
         <p className="w-full max-w-[573px] text-black text-base font-inter font-normal leading-9">
           {CurrentNews?.description}
         </p>
