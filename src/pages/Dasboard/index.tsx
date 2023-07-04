@@ -57,7 +57,10 @@ export const Dashboard = ()=> {
                         )
                     })} */}
             </main>
+            <div className="min-h-[100vh]">
             <Footer />
+
+            </div>
         </>
     )
 }

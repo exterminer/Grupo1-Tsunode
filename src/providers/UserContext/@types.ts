@@ -23,7 +23,7 @@ export interface IUserContext{
     userLogin: (formData: TLoginForm) => Promise<void>;
     userLogout: () => void;
     loading: true | false;
-    handleEditNew: (formData: IFormEdit, id: number) => Promise<void>
+    
 }
 
 export interface IEdit {

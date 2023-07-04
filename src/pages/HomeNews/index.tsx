@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const HomeNews = () => {
     return (
-        <>
+        <div className="min-h-[100vh]">
             <section>
                 <Header />
             </section>
@@ -29,9 +29,12 @@ export const HomeNews = () => {
                     <LastNews />
                 </ul>
             </section>
-            <section>
+            <div className="h-[40px] mb-[10px] mt-[20px]">
+
+            </div>
+            <section className="mt=[50px]">
                 <Footer />
             </section>
-        </>
+        </div>
     )
 }

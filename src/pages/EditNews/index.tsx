@@ -1,17 +1,15 @@
-import { Header } from "../../components/Header"
-import { Footer } from "../../components/Footer"
-import { FormEdit } from "../../components/FormEdit"
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { FormEdit } from "../../components/FormEdit";
 
 export const EditNews = () => {
-   
-    return (
-        <>
-       <section>
-            <Header />
-            <FormEdit />
-            <Footer />
-        </section>
-        </>
-    )
-
-}
+  return (
+    <div className="bg-grey">
+      <section className="min-h-[100vh]">
+        <Header />
+        <FormEdit />
+        <Footer />
+      </section>
+    </div>
+  );
+};
