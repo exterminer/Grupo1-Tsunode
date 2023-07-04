@@ -4,7 +4,7 @@ import { Header } from "../../components/Header"
 import { LastNews } from "./LastNews"
 
 export const HomeNews = () => {
-
+   
     return (
         <>
         <section>
@@ -20,9 +20,7 @@ export const HomeNews = () => {
         </section>
         <section>
             <h2>Últimas notícias</h2>
-            <ul>
                 <LastNews />
-            </ul>
         </section>
         <section>
             <Footer />

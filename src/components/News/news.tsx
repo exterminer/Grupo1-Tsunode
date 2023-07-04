@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 interface NewsProps {
   key: number;
-  img: string;
+  img: string | undefined;
   title: string;
   owner: string;
 }

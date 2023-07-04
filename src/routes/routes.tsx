@@ -3,6 +3,7 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { AllNews } from "../pages/AllNews/AllNews";
 import { HomeNews } from "../pages/HomeNews";
+import { EditNews } from "../pages/EditNews";
 
 export const RoutesMain = () => {
   return (
@@ -12,8 +13,11 @@ export const RoutesMain = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
+        <Route path="/editnews" element={<EditNews />} />
       </Route>
-      <Route></Route>
+      <Route>
+        <Route path="/editnews" element={<EditNews />} />
+      </Route>
     </Routes>
   );
 };

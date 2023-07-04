@@ -12,6 +12,7 @@ interface Ilike {
 
 interface INews {
   title: string;
+  image: string | undefined;
   description: string;
   owner: string;
   userId: number;
