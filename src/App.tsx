@@ -9,7 +9,7 @@ function App() {
   const { loading } = useContext(UserContext);
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto ">
+    <div className="w-full max-w-[1200px] mx-auto relative ">
 
       <NewsProvider>
         <main className="">

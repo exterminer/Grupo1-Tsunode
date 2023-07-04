@@ -4,12 +4,14 @@ export interface INewsContext {
     newslist: INews[];
     setCurrentNews: React.Dispatch<React.SetStateAction<INews | null>>;
     handleEditNew: (formData: IFormEdit, id: number) => Promise<void>
+    setCurrentID: React.Dispatch<React.SetStateAction<string>>;
+    CurrentNews : INews|null ;
 }
-  
+
 export interface Ilike {
-    quantidade: number;
+  quantidade: number| undefined;
 }
-  
+
 export interface INews {
     image: string;
     title: string;

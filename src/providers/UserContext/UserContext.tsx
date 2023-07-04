@@ -14,6 +14,7 @@ export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({children}: IUserProviderProps)=> {
     const [user, setUser] = useState<IUser | null>(null);
+    // const [userNews, setUserNews] = useState<IUser | null>(null);
     const [loading, setLoading] = useState<true | false>(false);
    
 
@@ -30,16 +31,28 @@ export const UserProvider = ({children}: IUserProviderProps)=> {
         }
     }
 
+    // const getUser = async () => {
+    //     try {
+    //         const response = await api.get("/posts?_embed=likes");
+    //         // console.log(response.data)
+    //         setUserNews(response.data.filter((new) => {new.userId == user.id}));
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    //     }
+    // }
+      
     const userLogin = async (formData: TLoginForm) => {
         try {
             // setLoading(true);
             const { data } = await api.post<IUserLoginResponse>("/login", formData);
             setUser(data.user);
+            
             localStorage.setItem("@TOKEN", data.accessToken);
             localStorage.setItem("@USERID", JSON.stringify(data.user.id));
+            console.log(data.user)
             console.log(data)
-            console.log(data)
-            // navigate("/Dashboard");
+            navigate("/dashboard");
         } catch (error) {
             console.log(error);
         } finally{
