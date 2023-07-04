@@ -3,7 +3,7 @@ import back from "../../assets/Vector.png";
 import plus from "../../assets/Vectorplus.png"
 import { HeaderDash } from "../../components/Header";
 import { useContext } from "react";
-import { NewsContext } from "../../providers/newsContext";
+import { NewsContext } from "../../providers/NewsContext/NewsContext";
 import { Footer } from "../../components/Footer";
 import { Posts } from "../../components/posts";
 // import { INews } from "../../providers/newsContext"

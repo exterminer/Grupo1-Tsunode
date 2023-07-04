@@ -1,11 +1,16 @@
 import { Route, Routes } from "react-router-dom";
+
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
-import { AllNews } from "../pages/AllNews/AllNews";
 import { HomeNews } from "../pages/HomeNews";
 import { Dashboard } from "../pages/Dasboard";
+import { AllNews } from "../pages/AllNews/AllNews";
+import { PublicRoutes } from "../components/PublicRoutes";
+import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { InternPage } from "../pages/internpage/internpage";
 
 export const RoutesMain = () => {
+
   return (
     <Routes>
       <Route>
@@ -14,8 +19,11 @@ export const RoutesMain = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/internpage" element={<InternPage/>} />
       </Route>
-      <Route></Route>
+      <Route>
+
+      </Route>
     </Routes>
   );
 };
