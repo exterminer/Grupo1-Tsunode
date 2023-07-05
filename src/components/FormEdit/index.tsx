@@ -33,10 +33,19 @@ console.log(errors)
             <form className="flex flex-col" onSubmit={handleSubmit(submit)}>
                 <label className="text-xs font-bold font-lora mb-1">Título</label>
                 <input {...register("title")} className="border-none bg-white h-11 rounded-sm mb-3 p-4" type="text" placeholder="Digite o título do seu post" />
+                {errors.title ? (
+                <p className="text-xs font-bold font-lora mb-1 text-red-500">{errors.title.message}</p>
+                ) : null}
                 <label className="text-xs font-bold font-lora mb-1">Imagem em destaque</label>
                 <input {...register("image")} className="border-none bg-white h-11 rounded-sm mb-3 p-4" type="url" placeholder="Digite o link da sua imagem" />
+                {errors.image ? (
+                <p className="text-xs font-bold font-lora mb-1 text-red-500">{errors.image.message}</p>
+                ) : null}
                 <label className="text-xs font-bold font-lora mb-1">Conteúdo</label>
                 <textarea {...register("description")} className="border-none bg-white rounded-sm mb-8 p-4" rows={10} ></textarea>
+                {errors.description ? (
+                <p className="text-xs font-bold font-lora mb-1 text-red-500">{errors.description.message}</p>
+                ) : null}
                 <div className="flex justify-start">
                 <button type="submit"  className="text-white font-bold text-xs text-base font-inter font-bold rounded-md bg-blue h-11 w-32 text-base">Salvar post</button>
                 </div>
