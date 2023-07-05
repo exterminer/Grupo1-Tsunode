@@ -13,7 +13,7 @@ export const UserContext = createContext({} as IUserContext);
 // }
 
 export const UserProvider = ({children}: IUserProviderProps)=> {
-    const [user, setUser] = useState<IUser | null>(null);
+    const [user, setUser] = useState<IUser | null>();
     // const [userNews, setUserNews] = useState<IUser | null>(null);
     const [loading, setLoading] = useState<true | false>(false);
 
@@ -45,12 +45,11 @@ export const UserProvider = ({children}: IUserProviderProps)=> {
         try {
             // setLoading(true);
             const { data } = await api.post<IUserLoginResponse>("/login", formData);
-            setUser(data.user);
             
             localStorage.setItem("@TOKEN", data.accessToken);
             localStorage.setItem("@USERID", JSON.stringify(data.user.id));
             console.log(data.user)
-            console.log(data)
+            setUser(data.user);
             navigate("/dashboard");
         } catch (error) {
             console.log(error);
@@ -63,7 +62,7 @@ export const UserProvider = ({children}: IUserProviderProps)=> {
         setUser(null);
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@USERID");
-        navigate("/Home");
+        navigate("/");
     }
 
     return(

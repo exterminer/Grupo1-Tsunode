@@ -39,8 +39,8 @@ export const Register = ()=> {
                         <Input  type="email" placeholder="E-mail" error={errors.email} {...register("email")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
                         <Input  type="password" placeholder="Senha" error={errors.password} {...register("password")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
                         <Input  type="password" placeholder="Confirmar senha" error={errors.confirmPassword} {...register("confirmPassword")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
-                    </form>
                     <button type="submit" className="bg-blue text-white rounded w-[166px] h-[54px] self-end">Cadastrar-se</button>
+                    </form>
                 </div>
             </div>
             <Footer />
