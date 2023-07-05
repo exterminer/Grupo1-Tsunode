@@ -1,12 +1,21 @@
+import { useContext } from "react";
+import { NewsContext } from "../../../providers/NewsContext/NewsContext";
+import { News } from "../../../components/News/news";
 
 export const LastNews = () => {
-    
-    return (
-        <li>
-            <img src="" alt="" />
-            <p>Por: </p>
-            <p>Title</p>
-            <button>Ler mais</button>
-        </li>
-    )
-}
+  const { newslist } = useContext(NewsContext);
+
+  return (
+    <ul className=" flex gap-[14px] flex-wrap">
+      {newslist.map((note) => (
+        <News
+          image={note.image}
+          key={note.id}
+          title={note.title}
+          owner={note.owner}
+          id={note.id}
+        />
+      ))}
+    </ul>
+  );
+};

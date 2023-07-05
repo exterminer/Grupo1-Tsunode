@@ -8,7 +8,7 @@ export const InternPage = () => {
   const { CurrentNews, newslist } = useContext(NewsContext);
   console.log(CurrentNews?.likes);
   return (
-    <div>
+    <div className="min-h-[100vh]">
       <Header />
       <div className=" flex flex-col items-center gap-[20px] py-[16px] px-[20px]">
         <p className="text-black text-base font-inter font-normal">
