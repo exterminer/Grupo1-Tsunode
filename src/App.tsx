@@ -9,16 +9,17 @@ function App() {
   const { loading } = useContext(UserContext);
 
   return (
+    
     <div className="w-full max-w-[1200px] mx-auto relative ">
 
       <NewsProvider>
         <main className="">
           {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
         </main>
+        
       </NewsProvider>
-
     </div>
   )
-}
+ }
 
 export default App;

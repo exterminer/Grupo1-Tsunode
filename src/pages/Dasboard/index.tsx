@@ -1,52 +1,64 @@
-import { Link } from "react-router-dom";
 import back from "../../assets/Vector.png";
-import plus from "../../assets/Vectorplus.png"
+import plus from "../../assets/Vectorplus.png";
+import Modal from "react-modal";
+
 import { HeaderDash } from "../../components/Header";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NewsContext } from "../../providers/NewsContext/NewsContext";
 import { Footer } from "../../components/Footer";
 import { Posts } from "../../components/posts";
-// import { INews } from "../../providers/newsContext"
 import { UserContext } from "../../providers/UserContext/UserContext";
-
+import { Input } from "../../components/Input";
+import { useForm, SubmitHandler } from "react-hook-form"
+import { newPostSchema } from "./newPostSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { TPostForm } from "./newPostSchema";
 
 export const Dashboard = ()=> {
-    const { newslist } = useContext(NewsContext);
-    const  idUser = localStorage.getItem("@USERID")
-    // const { user } = useContext(UserContext)
-    console.log(idUser)
+    const [modalIsOpen, setIsOpen] = useState(false)
+    const { newslist, addNewPost, deletePost } = useContext(NewsContext)
+    const { user, userLogout } = useContext(UserContext)
+    const { register, handleSubmit, formState: { errors }} = useForm<TPostForm>({
+        resolver: zodResolver(newPostSchema)
+    })
 
+     const submitPosts: SubmitHandler<TPostForm> = (formData) => {
+        addNewPost(formData)
+      }
     // console.log(newslist)
+    // console.log(user)
+    const openModal = () => { 
+        setIsOpen ( true ) ; 
+      }    
+    const closeModal = () => { 
+        setIsOpen ( false ) ; 
+      }
     
-    //  const list =  newslist.filter((new) => {new.userId == user.id})
-    {console.log(newslist.length)}
-      return (
-          <>
+    const list =  newslist.filter(newitem => newitem.userId == user.id)
+
+    return (
+        <>
         <div>
             <HeaderDash />
-            <Link to="/">
-                    <img src={back} alt="icone de saída" />
-            </Link>
+            <button onClick={userLogout}> <img src={back} alt="icone de saída" /></button>
         </div>
             <main>
                 <div>
                    <h1>Suas publicações</h1>
-                   <button><img src={plus} alt="mais" /> Novo post </button>
+                   <button onClick={openModal} ><img src={plus} alt="mais" /> Novo post</button>
+                   <Modal isOpen = { modalIsOpen } >
+                      <h1>novo post</h1>
+                      <button onClick={closeModal}> x </button>
+                      <form onSubmit={handleSubmit(submitPosts)}>
+                        <Input type="text" placeholder="Titulo" {...register("title")}/>
+                        <Input type="text" placeholder="imagem em destaque" {...register("image")}/>  
+                        <textarea placeholder="Conteúdo do post" {...register("description")}/>  
+                        <button>Criar post</button>
+                      </form>
+                   </Modal>
                 </div>
-                {
-                newslist?.length === 0 ? (
-                <head>la ele</head>
-                    ):(
-                        newslist.filter((post) => post.id === 1 ).map((post) => (
-                            <Posts
-                            image={post.image}
-                            title={post.title}
-                            id={post.id}
-                            key={post.id}
-                            />
-                        ))
-                 )}
-                    {/* {list.map((post) => {
+
+                    {list.map((post) => {
                         return(
                             <Posts
                              image={post.image}
@@ -55,7 +67,7 @@ export const Dashboard = ()=> {
                              key={post.id}
                             />
                         )
-                    })} */}
+                    })}
             </main>
             <div className="min-h-[100vh]">
             <Footer />

@@ -12,16 +12,10 @@ import { TLoginForm } from "../../pages/Login/loginFormSchema";
 
 export const UserContext = createContext({} as IUserContext);
 
-// interface ILoading {
-//     loading:boolean;
-// }
-
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-  // const [userNews, setUserNews] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<true | false>(false);
 
-  // const currentPath = window.location.pathname;
   const navigate = useNavigate();
 
   const userRegister = async (formData: TRegisterForm) => {
@@ -34,27 +28,15 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   };
 
-  // const getUser = async () => {
-  //     try {
-  //         const response = await api.get("/posts?_embed=likes");
-  //         // console.log(response.data)
-  //         setUserNews(response.data.filter((new) => {new.userId == user.id}));
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  // }
-
   const userLogin = async (formData: TLoginForm) => {
     try {
-      // setLoading(true);
+      
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-      setUser(data.user);
 
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", JSON.stringify(data.user.id));
       console.log(data.user);
-      console.log(data);
+      setUser(data.user);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
@@ -67,7 +49,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setUser(null);
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
-    navigate("/Home");
+    navigate("/");
   };
 
   return (

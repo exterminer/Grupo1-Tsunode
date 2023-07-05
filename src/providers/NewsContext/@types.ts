@@ -1,3 +1,5 @@
+import { TPostForm } from "../../pages/Dasboard/newPostSchema";
+import { IUser } from "../UserContext/@types";
 import { IFormEdit } from "../../components/FormEdit/formEditSchema";
 
 export interface INewsContext {
@@ -5,6 +7,8 @@ export interface INewsContext {
     setCurrentNews: React.Dispatch<React.SetStateAction<INews | null>>;
     handleEditNew: (formData: IFormEdit, id: number) => Promise<void>
     setCurrentID: React.Dispatch<React.SetStateAction<string>>;
+    addNewPost: (formData: TPostForm) => Promise<void>
+    deletePost: (id: number) => Promise<void>
     CurrentNews : INews|null ;
 }
 

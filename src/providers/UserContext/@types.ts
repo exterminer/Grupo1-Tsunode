@@ -18,7 +18,7 @@ export interface IUserLoginResponse {
 }
 
 export interface IUserContext{
-    user: IUser | null;
+    user: IUser | null | undefined ;
     userRegister: (formData: TRegisterForm) => Promise<void>;
     userLogin: (formData: TLoginForm) => Promise<void>;
     userLogout: () => void;
