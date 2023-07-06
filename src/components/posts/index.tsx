@@ -1,9 +1,10 @@
-import bin from "../../assets/lixeira.png"
-import pen from "../../assets/caneta.png"
-
+import { Link } from "react-router-dom";
 import React, { useContext } from "react";
+import { useForm, SubmitHandler } from "react-hook-form"
+
+import pen from "../../assets/caneta.png";
+import bin from "../../assets/lixeira.png";
 import { NewsContext } from "../../providers/NewsContext/NewsContext";
-import { UserContext } from "../../providers/UserContext/UserContext";
 
 interface AllPosts {
   id: number;
@@ -12,16 +13,18 @@ interface AllPosts {
 }
 
 export const Posts: React.FC<AllPosts> = ({ image, title, id }) => {
-const { deletePost } = useContext(NewsContext)
-// console.log(user.id)
+const { deletePost, setPostId, postId, getSpecificNews } = useContext(NewsContext)
 
-
-  return (
-    <li>
-      <img src={image} alt="" />
-      <h3>{title}</h3>
-      <div>
-        <img src={pen} />
+return (
+    <li className="flex flex-row justify-between items-center">
+      <div className="flex flex-row items-center gap-10">
+        <img src={image} alt="" className="h-[153px] w-[153px] rounded-3xl"/>
+        <h3 className="text-[23px] font-lora font-bold">{title}</h3>
+      </div>
+      <div className="flex flex-row justify-between items-center h-[36px] w-[87px]">
+        <Link to="/editnews">
+          <img src={pen} onClick={() => getSpecificNews(id)}/>
+        </Link>
         <img src={bin} onClick={() => deletePost(id)} />
       </div>
     </li>

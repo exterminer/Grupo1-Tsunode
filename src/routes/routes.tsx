@@ -16,14 +16,16 @@ export const RoutesMain = () => {
     <Routes>
       <Route>
         <Route path="/" element={<HomeNews />}></Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/allnews" element={<AllNews />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/internpage" element={<InternPage/>} />
       </Route>
-      <Route>
-      <Route path="/editnews" element={<EditNews />} />
+      <Route element={ <PublicRoutes /> }>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+      <Route element={ <ProtectedRoutes /> }>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/editnews" element={<EditNews />} />
       </Route>
     </Routes>
   );

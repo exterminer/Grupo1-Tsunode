@@ -2,17 +2,17 @@ import { z } from "zod";
 
 export const registerFormSchema = z
   .object({
-    name: z.string().min(2, "O nome é obrigatório"),
+    name: z.string().min(2, "O nome é obrigatório."),
     email: z
       .string()
-      .nonempty("Campo obrigatório")
+      .nonempty("Campo obrigatório.")
       .email("O e-mail fornecido é inválido."),
     password: z
       .string()
       .nonempty("Campo obrigatório.")
       .regex(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "Senha inválida"
+        "Senha inválida."
       ),
     confirmPassword: z.string().min(8),
   })

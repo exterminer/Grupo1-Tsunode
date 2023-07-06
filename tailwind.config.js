@@ -11,9 +11,8 @@ export default {
       'white': '#FFFFFF',
       'grey': '#F3F3F3',
       'blue': '#55A3FF',
-      
+      'red': '#D0342C'
     },
-    
     extend: {},
   },
   plugins: [],
