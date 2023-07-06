@@ -1,23 +1,28 @@
 import { z } from "zod";
 
-export const registerFormSchema = z.object({
-    name: 
-        z.string().min(2, "O nome é obrigatório"),
-    email: 
-        z.string().nonempty("Campo obrigatório").email("O e-mail fornecido é inválido."),
+export const registerFormSchema = z
+  .object({
+    name: z.string().min(2, "O nome é obrigatório."),
+    email: z
+      .string()
+      .nonempty("Campo obrigatório.")
+      .email("O e-mail fornecido é inválido."),
     password: z
-        .string()
-        .nonempty("Campo obrigatório.")
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Senha inválida"),
-    confirmPassword: z.string().min(8)
-
-}).superRefine(({ confirmPassword, password }, ctx) => {
+      .string()
+      .nonempty("Campo obrigatório.")
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Senha inválida."
+      ),
+    confirmPassword: z.string().min(8),
+  })
+  .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
-        message: "As senhas não são iguais."
+        message: "As senhas não são iguais.",
       });
     }
-});
+  });
 
-export type TRegisterForm = z.infer<typeof registerFormSchema>;
+export type TRegisterForm = z.infer<typeof registerFormSchema >;

@@ -1,21 +1,18 @@
-import { useContext } from "react"
-import "./index.css"
 import { RoutesMain } from "./routes/routes.tsx";
-import { UserContext } from "./providers/UserContext/UserContext"
-import "./index.css"
-import { NewsProvider } from "./providers/newsContext.tsx";
-function App() {
-  const { loading } = useContext(UserContext);
+import { NewsProvider } from "./providers/NewsContext/NewsContext.tsx";
 
-  return(
-    <>
+import "./index.css";
+
+function App() {
+  return (
+    <div className="w-full max-w-[1200px] mx-auto relative ">
       <NewsProvider>
-        <main className="bg-red-300">
-        {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
+        <main className="">
+          <RoutesMain />
         </main>
       </NewsProvider>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App;
