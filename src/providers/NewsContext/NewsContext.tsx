@@ -1,6 +1,12 @@
-import { createContext, useState, useEffect, ReactNode, useContext } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useContext,
+} from "react";
 
-import { IEdit } from "./@types";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../service/api";
 import { INewsContext, INews } from "./@types";
 import { UserContext } from "../UserContext/UserContext";
@@ -11,14 +17,14 @@ export const NewsContext = createContext({} as INewsContext);
 
 export const NewsProvider = ({ children }: { children: ReactNode }) => {
   const [news, setNews] = useState<INews[]>([]);
-  const [currentID, setCurrentID] = useState();
+  const [currentID, setCurrentID] = useState(0);
   const [currentNews, setCurrentNews] = useState<INews | null>(null);
-  const [post, setPost] = useState({} as IEdit);
-  const [postId, setPostId] = useState();
+  const navigate = useNavigate();
+
   const { user, setLoading } = useContext(UserContext);
 
   const token = localStorage.getItem("@TOKEN");
-  
+
   const getNews = async () => {
     try {
       setLoading(true);
@@ -26,37 +32,46 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
       setNews(response.data);
     } catch (error) {
       console.log(error);
-    } finally { setLoading(false) }
+    } finally {
+      setLoading(false);
+    }
   };
-// ------------------------------------------------------------------------editfunction_
-  const handleEditPost = async (formData: IFormEdit, id:number) => {
+  // ------------------------------------------------------------------------editfunction_
+  const handleEditPost = async (
+    formData: IFormEdit,
+    id: number | null | undefined
+  ) => {
     const token = localStorage.getItem("@TOKEN");
 
     try {
       setLoading(true);
-      const response = await api.put(`/posts/${id}`, { ...formData, owner: user?.name, userId: user?.id },
+      const response = await api.put(
+        `/posts/${id}`,
+        { ...formData, owner: user?.name, userId: user?.id },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
       console.log(response);
-      setPost(response.data);
-
+      getNews();
+      navigate("/dashboard")
     } catch (error) {
       console.log(error);
-      console.log(id)
-    } finally { setLoading(false) }
+      console.log(id);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const getSpecificNews = async (id:number) => {
+  const getSpecificNews = async (id: number | undefined) => {
     try {
-      const {data} = await api.get(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get(`/posts/${id}?_embed=likes`);
       setCurrentNews(data);
     } catch (error) {
       console.log(error);
-    } 
+    }
   };
- 
+
   const addNewPost = async (formData: TPostForm) => {
     try {
       setLoading(true);
@@ -72,7 +87,9 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
       setNews([...news, data]);
     } catch (error) {
       console.log(error);
-    } finally{ setLoading(false) }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const deletePost = async (id: number) => {
@@ -85,17 +102,36 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
       setNews(news.filter((post) => post.id != id));
     } catch (error) {
       console.log(error);
-    } finally { setLoading(false) }
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // useEffect(() => {
-  //   if (currentID !== "") {
-  //     getSpecificNews(id);
-  //   }
-  // }, [currentID]);
+  useEffect(() => {
+    getNews();
+  }, []);
+
+  useEffect(() => {
+    if (currentID !== 0) {
+      getSpecificNews(currentID);
+    }
+  }, [currentID]);
 
   return (
-    <NewsContext.Provider value={{newslist: news, currentNews, addNewPost, deletePost, handleEditPost, setCurrentNews, getNews, getSpecificNews, currentID, setCurrentID, postId, setPostId }}>
+    <NewsContext.Provider
+      value={{
+        newslist: news,
+        currentNews,
+        addNewPost,
+        deletePost,
+        handleEditPost,
+        setCurrentNews,
+        getNews,
+        getSpecificNews,
+        currentID,
+        setCurrentID,
+      }}
+    >
       {children}
     </NewsContext.Provider>
   );

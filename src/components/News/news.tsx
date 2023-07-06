@@ -12,8 +12,8 @@ interface NewsProps {
 }
 
 function handleNavigateInternPage(
-  id: string,
-  setCurrentNews: React.Dispatch<React.SetStateAction<string>>
+  id: number,
+  setCurrentNews: React.Dispatch<React.SetStateAction<number>>
 ) {
   setCurrentNews(id);
 }
@@ -23,7 +23,9 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
   return (
     <div className="flex">
       <li className="w-full max-w-[573px] min-w-250">
-        <img src={image} alt="" className="rounded-[1.5rem]  h-284 mb-[12px]" />
+        <div className=" h-[284px] rounded-[1.5rem] mb-[12px] overflow-y-hidden ">
+          <img src={image} alt="" />
+        </div>
         <p className="text-black text-base font-inter font-normal mb-[7px]">
           Por : {owner}
         </p>
@@ -32,7 +34,7 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
         </h3>
 
         <Link
-          onClick={() => handleNavigateInternPage(String(id), setCurrentID)}
+          onClick={() => handleNavigateInternPage(id, setCurrentID)}
           className="text-blue text-base font-inter font-normal"
           to={"/internpage"}
         >

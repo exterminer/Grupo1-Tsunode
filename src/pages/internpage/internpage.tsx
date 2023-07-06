@@ -5,22 +5,22 @@ import { News } from "../../components/News/news";
 import { Footer } from "../../components/Footer";
 import likeimg from "../../assets/likeImg.svg";
 export const InternPage = () => {
-  const { CurrentNews, newslist } = useContext(NewsContext);
-  console.log(CurrentNews?.likes);
+  const { newslist, currentNews } = useContext(NewsContext);
+  console.log(currentNews?.likes);
   return (
     <div className="min-h-[100vh]">
       <Header />
       <div className=" flex flex-col items-center gap-[20px] py-[16px] px-[20px]">
         <p className="text-black text-base font-inter font-normal">
           {" "}
-          Por : {CurrentNews?.owner}
+          Por : {currentNews?.owner}
         </p>
         <h1 className="text-black text-3xl font-lora font-bold w-full max-w-[523px]">
-          {CurrentNews?.title}
+          {currentNews?.title}
         </h1>
-        <img src={CurrentNews?.image} alt="" />
+        <img className="mim-h-[200px] max-h-[350px] rounded-xl w-full max-w-[580px]" src={currentNews?.image} alt="" />
         <div className="  w-full max-w-[570px] flex justify-start">
-          {CurrentNews?.likes.length === 0 ? (
+          {currentNews?.likes.length === 0 ? (
             <div className="flex gap-[10px]">
               <img src={likeimg} alt="" />
               <p className="text-black text-sm font-inter font-normal">
@@ -31,14 +31,14 @@ export const InternPage = () => {
             <div className="flex gap-[10px]">
               <img src={likeimg} alt="" />
               <p className="text-black text-sm font-inter font-normal">
-                {CurrentNews?.likes.length} Curtidas
+                {currentNews?.likes.length} Curtidas
               </p>
             </div>
           )}
         </div>
 
-        <p className="w-full max-w-[573px] text-black text-base font-inter font-normal leading-9">
-          {CurrentNews?.description}
+        <p className="w-full max-w-[560px] text-black text-base font-inter font-normal leading-9">
+          {currentNews?.description}
         </p>
       </div>
 

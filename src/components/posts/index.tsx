@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
+
 
 import pen from "../../assets/caneta.png";
 import bin from "../../assets/lixeira.png";
@@ -13,7 +13,7 @@ interface AllPosts {
 }
 
 export const Posts: React.FC<AllPosts> = ({ image, title, id }) => {
-const { deletePost, setPostId, postId, getSpecificNews } = useContext(NewsContext)
+const { deletePost, getSpecificNews } = useContext(NewsContext)
 
 return (
     <li className="flex flex-row justify-between items-center">

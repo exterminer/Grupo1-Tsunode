@@ -8,6 +8,7 @@ import { NewsContext } from "../../providers/NewsContext/NewsContext.tsx";
 
 export const AllNews = () => {
   const { newslist } = useContext(NewsContext);
+  
 
 
 
