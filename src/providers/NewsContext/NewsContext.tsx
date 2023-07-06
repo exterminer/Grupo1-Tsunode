@@ -35,6 +35,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
         Authorization: `Bearer ${token}`,
       };
       await api.post("/likes", body, { headers })
+      getSpecificNews(id)
     } catch (error) { 
       console.log(error);
     }  
@@ -46,6 +47,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
         Authorization: `Bearer ${token}`,
       };
       await api.delete(`/likes/${id}`, { headers })
+      getSpecificNews(id)
     } catch (error) { 
       console.log(error);
     }  
