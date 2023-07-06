@@ -12,11 +12,14 @@ export interface INewsContext {
   deletePost: (id: number) => Promise<void>;
   getNews: () => Promise<void>;
   getSpecificNews: (id: number) => Promise<void>;
-
+  like: (userId:number, id:number) => Promise<void>;
+  deslike: (id:number) => Promise<void>;
 }
 
 export interface Ilike {
   quantidade: number | undefined;
+  id:number,
+  userId: number
 }
 
 export interface INews {

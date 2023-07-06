@@ -4,8 +4,29 @@ import { useContext } from "react";
 import { News } from "../../components/News/news";
 import { Footer } from "../../components/Footer";
 import likeimg from "../../assets/likeImg.svg";
+import { UserContext } from "../../providers/UserContext/UserContext";
+import { useNavigate } from "react-router-dom";
+
 export const InternPage = () => {
-  const { newslist, currentNews } = useContext(NewsContext);
+  const { newslist, currentNews, like, deslike } = useContext(NewsContext);
+  const { user } = useContext(UserContext);
+
+  const likeInfo = [currentNews?.likes];
+  const myId = user?.id;
+
+// console.log(likeInfo)
+// item.userId == user?.id
+
+  const selectFunction = () => {
+    if(currentNews?.likes.map((item)=> item.userId === user?.id )) {
+      deslike(currentNews.id)
+      console.log("deslike")
+    }else {
+      like(Number(user?.id), Number(currentNews?.id))
+      console.log("like")
+
+    }
+  }
 
   return (
     <div className="min-h-[100vh]">
@@ -26,14 +47,14 @@ export const InternPage = () => {
         <div className="  w-full max-w-[570px] flex justify-start">
           {currentNews?.likes.length === 0 ? (
             <div className="flex gap-[10px]">
-              <img src={likeimg} alt="" />
+              <img src={likeimg} alt="Heart" onClick={selectFunction}/>
               <p className="text-black text-sm font-inter font-normal">
                 Seja o primeiro a curtir{" "}
               </p>
             </div>
           ) : (
             <div className="flex gap-[10px]">
-              <img src={likeimg} alt="" />
+              <img src={likeimg} alt="Heart" onClick={selectFunction}/>
               <p className="text-black text-sm font-inter font-normal">
                 {currentNews?.likes.length} Curtidas
               </p>
