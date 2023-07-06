@@ -19,7 +19,8 @@ export interface INewsContext {
 export interface Ilike {
   quantidade: number | undefined;
   id:number,
-  userId: number
+  userId: number,
+  postId: number,
 }
 
 export interface INews {

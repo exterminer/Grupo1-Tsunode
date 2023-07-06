@@ -11,20 +11,14 @@ export const InternPage = () => {
   const { newslist, currentNews, like, deslike } = useContext(NewsContext);
   const { user } = useContext(UserContext);
 
-  const likeInfo = [currentNews?.likes];
-  const myId = user?.id;
-
-// console.log(likeInfo)
-// item.userId == user?.id
-
   const selectFunction = () => {
-    if(currentNews?.likes.map((item)=> item.userId === user?.id )) {
-      deslike(currentNews.id)
+    if(currentNews?.likes.some((item)=> item.userId == user?.id)) {
+      const id = currentNews?.likes.find((item) => item.userId === user?.id)
+      deslike(id?.postId)
       console.log("deslike")
     }else {
       like(Number(user?.id), Number(currentNews?.id))
       console.log("like")
-
     }
   }
 
