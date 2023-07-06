@@ -52,7 +52,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
+      setCurrentNews(response.data);
       getNews();
       navigate("/dashboard");
     } catch (error) {
