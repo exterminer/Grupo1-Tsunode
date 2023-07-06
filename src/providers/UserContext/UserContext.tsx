@@ -4,13 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../service/api";
 import { TLoginForm } from "../../pages/Login/loginFormSchema";
 import { TRegisterForm } from "../../pages/Register/registerFormSchema";
-import { IUserContext, IUserProviderProps, IUser, IUserLoginResponse } from "./@types";
+import {
+  IUserContext,
+  IUserProviderProps,
+  IUser,
+  IUserLoginResponse,
+} from "./@types";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<true | false>(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const navigate = useNavigate();
   const currentPath = window.location.pathname;
@@ -20,24 +26,27 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     const id = localStorage.getItem("@USERID");
 
     const loadUser = async () => {
-        try {
-            setLoading(true);
-            const {data} = await api.get(`/users/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            setUser(data);
-            // setTechs(data.techs);
-            navigate(currentPath);
-        } catch (error) {
-            console.log(error);
-        } finally { setLoading(false) }
-    }
-    if(token) {
-        loadUser();
+      try {
+        setLoading(true);
+        const { data } = await api.get(`/users/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(data);
+        // setTechs(data.techs);
+        navigate(currentPath);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (token) {
+      loadUser();
     }
   }, []);
+
 
   const userLogin = async (formData: TLoginForm) => {
     try {
@@ -47,11 +56,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@USERID", JSON.stringify(data.user.id));
       setUser(data.user);
       navigate("/dashboard");
+      setIsUserLoggedIn(true)
     } catch (error) {
       console.log(error);
-    } finally { setLoading(false) }
+    } finally {
+      setLoading(false);
+    }
   };
-  
+
   const userRegister = async (formData: TRegisterForm) => {
     try {
       setLoading(true);
@@ -59,18 +71,32 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       navigate("/Login");
     } catch (error) {
       console.log(error);
-    } finally { setLoading(false) }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const userLogout = () => {
     setUser(null);
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
+    setIsUserLoggedIn(false);
     navigate("/");
   };
 
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin, userLogout, loading, setLoading }}>
+    <UserContext.Provider
+      value={{
+        user,
+        userRegister,
+        userLogin,
+        userLogout,
+        loading,
+        setLoading,
+        isUserLoggedIn,
+        setIsUserLoggedIn,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

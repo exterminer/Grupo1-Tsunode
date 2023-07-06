@@ -29,6 +29,7 @@ export const Dashboard = () => {
 
   const submitPosts: SubmitHandler<TPostForm> = (formData) => {
     addNewPost(formData);
+    closeModal();
   };
 
   const openModal = () => {
@@ -45,7 +46,7 @@ export const Dashboard = () => {
       <div>
         <UserHeader />
       </div>
-      <main className="bg-grey px-[20px] py-[16px] min-h-[90vh] mb-[20px]">
+      <main className="bg-grey px-[20px] py-[16px] h-[90vh] mb-[20px] overflow-auto">
         <div className="flex flex-row justify-between items-center mb-10">
           <h1 className="text-black text-[44px] font-bold font-lora">
             Suas publicações

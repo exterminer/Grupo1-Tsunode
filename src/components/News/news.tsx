@@ -22,7 +22,7 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
   const { setCurrentID } = useContext(NewsContext);
   return (
     <div className="flex">
-      <li className="w-full max-w-[573px] min-w-250">
+      <li className="w-full max-w-[573px] min-w-[500px] ">
         <div className=" h-[284px] rounded-[1.5rem] mb-[12px] overflow-y-hidden ">
           <img src={image} alt="" />
         </div>

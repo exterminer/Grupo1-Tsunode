@@ -25,7 +25,7 @@ return (
         <Link to="/editnews">
           <img src={pen} onClick={() => getSpecificNews(id)}/>
         </Link>
-        <img src={bin} onClick={() => deletePost(id)} />
+        <img  className="cursor-pointer"src={bin} onClick={() => deletePost(id)} />
       </div>
     </li>
   );

@@ -8,7 +8,8 @@ export const HomeNews = () => {
     return (
         <div className="min-h-[100vh]">
             <section>
-                <Header />
+               <Header/>
+                
             </section>
             <section className="p-5">
                 <div className="flex flex-col items-center gap-2">
