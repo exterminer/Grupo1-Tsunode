@@ -100,11 +100,16 @@ export const Dashboard = () => {
                 </button>
               </form>
               <div>
-                    <p className="text-red fixed left-[330px] bottom-[467px]">{errors.title?.message}</p>
-                    <p className="text-red fixed left-[330px] bottom-[400px]">{errors.image?.message}</p>
-                    <p className="text-red fixed left-[330px] bottom-[400px]">{errors.description?.message}</p>
-                </div>
-                
+                <p className="text-red fixed left-[330px] bottom-[467px]">
+                  {errors.title?.message}
+                </p>
+                <p className="text-red fixed left-[330px] bottom-[400px]">
+                  {errors.image?.message}
+                </p>
+                <p className="text-red fixed left-[330px] bottom-[400px]">
+                  {errors.description?.message}
+                </p>
+              </div>
             </div>
           </Modal>
         </div>

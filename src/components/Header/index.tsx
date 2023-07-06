@@ -5,9 +5,8 @@ import back from "../../assets/Vector.png";
 import { UserContext } from "../../providers/UserContext/UserContext";
 
 export const Header = () => {
-  const { userLogout,isUserLoggedIn } = useContext(UserContext);
+  const { userLogout, isUserLoggedIn } = useContext(UserContext);
 
-  console.log(isUserLoggedIn)
   if (isUserLoggedIn == false) {
     return (
       <div className="flex justify-between py-[16px] px-[20px]">
@@ -41,15 +40,3 @@ export const Header = () => {
     );
   }
 };
-
-// return (
-
-//     <div className="flex justify-between py-[16px] px-[20px]">
-//         <Link to="/">
-//             <img src={logo} alt="Logo Kenzie Feed" />
-//         </Link>
-//         <Link to="/login">
-//             <button className="text-white text-xs text-base font-inter font-bold rounded-md bg-blue w-[77px] h-[34px]">Acessar</button>
-//         </Link>
-//     </div>
-// )

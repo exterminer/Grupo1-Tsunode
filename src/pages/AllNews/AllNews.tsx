@@ -5,16 +5,12 @@ import { Footer } from "../../components/Footer";
 import { News } from "../../components/News/news";
 import { NewsContext } from "../../providers/NewsContext/NewsContext.tsx";
 
-
 export const AllNews = () => {
   const { newslist } = useContext(NewsContext);
-  
-
-
 
   return (
     <div className="min-h-[100vh]">
-      <Header/>
+      <Header />
       <div className="py-[16px] px-[20px]">
         <h2 className="text-black text-xl font-bold font-lora mb-[15px]">
           Todas as noticias

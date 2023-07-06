@@ -36,7 +36,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   };
-  // ------------------------------------------------------------------------editfunction_
+
   const handleEditPost = async (
     formData: IFormEdit,
     id: number | null | undefined
@@ -52,12 +52,11 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(response);
+
       getNews();
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
-      console.log(id);
     } finally {
       setLoading(false);
     }

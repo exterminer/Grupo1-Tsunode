@@ -6,7 +6,7 @@ import { Footer } from "../../components/Footer";
 import likeimg from "../../assets/likeImg.svg";
 export const InternPage = () => {
   const { newslist, currentNews } = useContext(NewsContext);
-  console.log(currentNews?.likes);
+
   return (
     <div className="min-h-[100vh]">
       <Header />
@@ -18,7 +18,11 @@ export const InternPage = () => {
         <h1 className="text-black text-3xl font-lora font-bold w-full max-w-[523px]">
           {currentNews?.title}
         </h1>
-        <img className="mim-h-[200px] max-h-[350px] rounded-xl w-full max-w-[580px]" src={currentNews?.image} alt="" />
+        <img
+          className="mim-h-[200px] max-h-[350px] rounded-xl w-full max-w-[580px]"
+          src={currentNews?.image}
+          alt="Noticia"
+        />
         <div className="  w-full max-w-[570px] flex justify-start">
           {currentNews?.likes.length === 0 ? (
             <div className="flex gap-[10px]">
