@@ -32,12 +32,16 @@ export const Login = ()=> {
                     <h1 className="text-black text-[44px] font-bold font-lora">Acesse o KenzieFeed</h1>
                     <p className="text-[17px]">Preencha os campos corretamente para fazer login</p>
                     <form onSubmit={handleSubmit(submit)} className="flex-column text-blue-400">
-                        <Input  type="email" placeholder="E-mail" error={errors.email} {...register("email")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
-                        <Input  type="password" placeholder="Senha" error={errors.password} {...register("password")} className="text-white text-[17px] font-inter rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4 mt-2"/>
+                        <Input  type="email" placeholder="E-mail" {...register("email")} className="text-black text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
+                        <Input  type="password" placeholder="Senha" {...register("password")} className="text-black text-[17px] font-inter rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4 mt-2"/>
                         <button type="submit" className="text-white text-[14px] font-inter font-bold rounded bg-blue w-[370px] h-[56px] mt-4">Entrar</button>
                     </form>
                     <p>Não é cadastrado?</p>
                     <Link to="/Register" className="text-blue underline-offset-2">Cadastre-se</Link>
+                </div>
+                <div>
+                    <p className="text-red fixed right-[330px] bottom-[485px]">{errors.email?.message}</p>
+                    <p className="text-red fixed right-[330px] bottom-[425px]">{errors.password?.message}</p>
                 </div>
             </div>
             <Footer />

@@ -35,15 +35,23 @@ export const Register = ()=> {
                     <h1 className="font-bold font-lora text-[44px]">Cadastre um usuário</h1>
                     <p className="text-[17px] font-normal mb-3">Preencha os campos corretamente para fazer o cadastro</p>
                     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap justify-between gap-2 w-[758px] h-[124px]">
-                        <Input  type="text" placeholder="Nome" error={errors.name} {...register("name")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
-                        <Input  type="email" placeholder="E-mail" error={errors.email} {...register("email")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
-                        <Input  type="password" placeholder="Senha" error={errors.password} {...register("password")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
-                        <Input  type="password" placeholder="Confirmar senha" error={errors.confirmPassword} {...register("confirmPassword")} className="text-white text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
+                        <Input  type="text" placeholder="Nome" {...register("name")} className="text-black text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
+                        <Input  type="email" placeholder="E-mail" {...register("email")} className="text-black text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
+                        <Input  type="password" placeholder="Senha" {...register("password")} className="text-black text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
+                        <Input  type="password" placeholder="Confirmar senha" {...register("confirmPassword")} className="text-black text-[17px] font-inter  rounded bg-white border-2 border-black border-opacity-20 w-[370px] h-[56px] pl-4"/>
                     <button type="submit" className="bg-blue text-white rounded w-[166px] h-[54px] self-end">Cadastrar-se</button>
                     </form>
+                </div>
+                <div>
+                    <p className="text-red fixed left-[330px] bottom-[467px]">{errors.name?.message}</p>
+                    <p className="text-red fixed left-[330px] bottom-[400px]">{errors.password?.message}</p>
+                </div>
+                <div>
+                    <p className="text-red fixed right-[442px] bottom-[467px]">{errors.email?.message}</p>
+                    <p className="text-red fixed right-[290px] bottom-[400px]">{errors.confirmPassword?.message}</p>
                 </div>
             </div>
             <Footer />
         </div>
     )
-}
+}   

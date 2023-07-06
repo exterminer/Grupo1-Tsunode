@@ -1,6 +1,5 @@
 import { TRegisterForm } from "../../pages/Register/registerFormSchema";
 import { TLoginForm } from "../../pages/Login/loginFormSchema";
-import { IFormEdit } from "../../components/FormEdit/formEditSchema";
 
 export interface IUserProviderProps {
     children:React.ReactNode;
@@ -23,7 +22,7 @@ export interface IUserContext{
     userLogin: (formData: TLoginForm) => Promise<void>;
     userLogout: () => void;
     loading: true | false;
-    
+    setLoading: React.Dispatch<React.SetStateAction<true | false>>;
 }
 
 export interface IEdit {

@@ -1,15 +1,19 @@
 import { TPostForm } from "../../pages/Dasboard/newPostSchema";
-import { IUser } from "../UserContext/@types";
 import { IFormEdit } from "../../components/FormEdit/formEditSchema";
 
 export interface INewsContext {
     newslist: INews[];
+    currentNews : INews|null ;
     setCurrentNews: React.Dispatch<React.SetStateAction<INews | null>>;
-    handleEditNew: (formData: IFormEdit, id: number) => Promise<void>
-    setCurrentID: React.Dispatch<React.SetStateAction<string>>;
-    addNewPost: (formData: TPostForm) => Promise<void>
-    deletePost: (id: number) => Promise<void>
-    CurrentNews : INews|null ;
+    currentID:number|undefined;
+    setCurrentID: React.Dispatch<React.SetStateAction<number|undefined>>;
+    handleEditPost: (formData: IFormEdit, id: number) => Promise<void>;
+    addNewPost: (formData: TPostForm) => Promise<void>;
+    deletePost: (id: number) => Promise<void>;
+    getNews: () => Promise<void>;
+    postId: number ;
+    setPostId: React.Dispatch<React.SetStateAction<number>>;
+    getSpecificNews: (id: number) => Promise<void>;
 }
 
 export interface Ilike {
@@ -31,5 +35,5 @@ export interface IEdit {
     description: string;
     owner: string;
     userId: number;
-    image: string
+    image: string;
 }

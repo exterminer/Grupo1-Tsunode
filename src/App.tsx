@@ -11,12 +11,10 @@ function App() {
   return (
     
     <div className="w-full max-w-[1200px] mx-auto relative ">
-
       <NewsProvider>
         <main className="">
-          {loading? <h1>Carregando...</h1> :  <RoutesMain/>}
+          {loading? <div className="min-h-[100vh] bg-white flex justify-center items-center"><h1 className="text-black text-[44px] font-bold font-lora">Carregando...</h1></div> :  <RoutesMain/>}
         </main>
-        
       </NewsProvider>
     </div>
   )
