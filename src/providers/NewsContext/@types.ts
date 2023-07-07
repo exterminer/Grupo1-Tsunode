@@ -13,7 +13,7 @@ export interface INewsContext {
   getNews: () => Promise<void>;
   getSpecificNews: (id: number) => Promise<void>;
   like: (userId:number, id:number) => Promise<void>;
-  deslike: (id:number) => Promise<void>;
+  deslike: (id:number|undefined , postId:number|undefined) => Promise<void>;
 }
 
 export interface Ilike {

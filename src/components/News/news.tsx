@@ -24,7 +24,14 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
     <div className="flex">
       <li className="w-full max-w-[573px] min-w-[500px] ">
         <div className=" h-[284px] rounded-[1.5rem] mb-[12px] overflow-y-hidden ">
+          {image === "" ? (
+            <div className="flex w-full border 4px py-[25%] px-[30%] solid  h-full  rounded-[1.5rem]">
+              <p className="text-black text-base font-inter font-normal">Imagem nao fornecida</p>
+            </div>
+          ) :(
+
           <img  className ="w-full"src={image} alt="" />
+          ) }
         </div>
         <p className="text-black text-base font-inter font-normal mb-[7px]">
           Por : {owner}

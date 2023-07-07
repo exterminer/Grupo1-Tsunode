@@ -41,13 +41,13 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
     }  
   }
 
-  const deslike = async (id:number) => {
+  const deslike = async (id:number|undefined , postId:number|undefined) => {
     try {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
       await api.delete(`/likes/${id}`, { headers })
-      getSpecificNews(id)
+      getSpecificNews(postId)
     } catch (error) { 
       console.log(error);
     }  
