@@ -4,8 +4,22 @@ import { useContext } from "react";
 import { News } from "../../components/News/news";
 import { Footer } from "../../components/Footer";
 import likeimg from "../../assets/likeImg.svg";
+import { UserContext } from "../../providers/UserContext/UserContext";
+
 export const InternPage = () => {
-  const { newslist, currentNews } = useContext(NewsContext);
+  const { newslist, currentNews, like, deslike } = useContext(NewsContext);
+  const { user } = useContext(UserContext);
+
+  const selectFunction = () => {
+    if (currentNews?.likes.some((item) => item.userId == user?.id)) {
+      const id = currentNews?.likes.find((item) => item.userId === user?.id);
+      deslike(id?.id, id?.postId);
+      console.log(id);
+    } else {
+      like(Number(user?.id), Number(currentNews?.id));
+      console.log("like");
+    }
+  };
 
   return (
     <div className="min-h-[100vh]">
@@ -26,14 +40,29 @@ export const InternPage = () => {
         <div className="  w-full max-w-[570px] flex justify-start">
           {currentNews?.likes.length === 0 ? (
             <div className="flex gap-[10px]">
-              <img src={likeimg} alt="" />
+              <img
+                className="cursor-pointer rounded-full 
+                object-contain
+                overflow-hidden
+                
+                "
+
+                src={likeimg}
+                alt="Heart"
+                onClick={selectFunction}
+              />
               <p className="text-black text-sm font-inter font-normal">
                 Seja o primeiro a curtir{" "}
               </p>
             </div>
           ) : (
             <div className="flex gap-[10px]">
-              <img src={likeimg} alt="" />
+              <img
+                className="cursor-pointer  "
+                src={likeimg}
+                alt="Heart"
+                onClick={selectFunction}
+              />
               <p className="text-black text-sm font-inter font-normal">
                 {currentNews?.likes.length} Curtidas
               </p>

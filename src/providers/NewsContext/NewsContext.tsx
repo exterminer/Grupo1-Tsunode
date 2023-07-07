@@ -25,6 +25,34 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
 
   const token = localStorage.getItem("@TOKEN");
 
+  const like = async (userId: number, id:number) => {
+    try {
+      const body = {
+        "userId": userId,
+        "postId": id
+      }
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await api.post("/likes", body, { headers })
+      getSpecificNews(id)
+    } catch (error) { 
+      console.log(error);
+    }  
+  }
+
+  const deslike = async (id:number|undefined , postId:number|undefined) => {
+    try {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await api.delete(`/likes/${id}`, { headers })
+      getSpecificNews(postId)
+    } catch (error) { 
+      console.log(error);
+    }  
+  }
+
   const getNews = async () => {
     try {
       setLoading(true);
@@ -129,6 +157,8 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
         getSpecificNews,
         currentID,
         setCurrentID,
+        like,
+        deslike
       }}
     >
       {children}
