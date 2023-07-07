@@ -7,7 +7,7 @@ import Xsymbol from "../../assets/X symbol.svg";
 import plus from "../../assets/Vectorplus.png";
 import { TPostForm } from "./newPostSchema";
 import { Input } from "../../components/Input";
-import { Posts } from "../../components/posts";
+import { Posts } from "../../components/Posts";
 import { newPostSchema } from "./newPostSchema";
 import { Footer } from "../../components/Footer";
 import { UserHeader } from "../../components/UserHeader";
