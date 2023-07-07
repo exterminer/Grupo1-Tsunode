@@ -36,13 +36,13 @@ export const Register = () => {
           className="flex justify-center items-center gap-3 bg-white w-[107px] h-[43px] border-[1px] border-blue rounded"
         >
           <img src={arrow} alt="arrow Back" className="w-[18px] h-[18px]" />
-          <button className="text-blue text-[14px] font-bold ">Voltar</button>
+          <button className="text-blue font-inter font-bold text-[14px]  ">Voltar</button>
         </Link>
         <div className="w-[758px] h-[40vw] justify-center gap-5 items-center flex flex-col">
           <h1 className="font-bold font-lora text-[44px]">
             Cadastre um usuário
           </h1>
-          <p className="text-[17px] font-normal mb-3">
+          <p className="text-[17px] font-normal mb-3 font-inter">
             Preencha os campos corretamente para fazer o cadastro
           </p>
           <form
@@ -75,7 +75,7 @@ export const Register = () => {
             />
             <button
               type="submit"
-              className="bg-blue text-white rounded w-[166px] h-[54px] self-end"
+              className="bg-blue font-inter text-white rounded w-[166px] h-[54px] self-end"
             >
               Cadastrar-se
             </button>

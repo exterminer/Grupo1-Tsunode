@@ -66,8 +66,8 @@ export const Login = () => {
               Entrar
             </button>
           </form>
-          <p>Não é cadastrado?</p>
-          <Link to="/Register" className="text-blue underline-offset-2">
+          <p className="text-black text-[14px] font-inter ">Não é cadastrado?</p>
+          <Link to="/Register" className="text-blue underline-offset-2 font-inter font-bold">
             Cadastre-se
           </Link>
         </div>
