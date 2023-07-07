@@ -53,7 +53,7 @@ export const Dashboard = () => {
           </h1>
           <button
             onClick={openModal}
-            className="flex flex-row justify-center gap-5 items-center bg-blue w-[146px] h-[43px] rounded text-white"
+            className="flex flex-row justify-center gap-5 items-center bg-blue w-[146px] h-[43px] rounded-[10px] text-white font-inter"
           >
             <img src={plus} alt="mais" /> Novo post
           </button>
