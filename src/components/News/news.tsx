@@ -30,7 +30,7 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
             </div>
           ) :(
 
-          <img  className ="w-full"src={image} alt="" />
+          <img  className ="w-[573px]"src={image} alt="" />
           ) }
         </div>
         <p className="text-black text-base font-inter font-normal mb-[7px]">
