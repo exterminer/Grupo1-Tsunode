@@ -24,7 +24,7 @@ export const News: React.FC<NewsProps> = ({ image, title, owner, id }) => {
     <div className="flex">
       <li className="w-full max-w-[573px] min-w-[500px] ">
         <div className=" h-[284px] rounded-[1.5rem] mb-[12px] overflow-y-hidden ">
-          <img src={image} alt="" />
+          <img  className ="w-full"src={image} alt="" />
         </div>
         <p className="text-black text-base font-inter font-normal mb-[7px]">
           Por : {owner}
