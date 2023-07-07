@@ -27,6 +27,7 @@ export const Header = () => {
           <img src={logo} alt="Logo Kenzie Feed" />
         </Link>
         <div className="flex flex-row items-center justify-between w-[120px]">
+          
           <Link to="/dashboard">
             <button className="text-blue text-xs text-base font-inter font-bold rounded bg-white border-[1px] w-[77px] h-[34px]">
               Dashboard

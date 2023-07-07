@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import { api } from "../../service/api";
 import { TLoginForm } from "../../pages/Login/loginFormSchema";
 import { TRegisterForm } from "../../pages/Register/registerFormSchema";
@@ -47,7 +49,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   }, []);
 
-
   const userLogin = async (formData: TLoginForm) => {
     try {
       setLoading(true);
@@ -56,9 +57,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@USERID", JSON.stringify(data.user.id));
       setUser(data.user);
       navigate("/dashboard");
-      setIsUserLoggedIn(true)
+      setIsUserLoggedIn(true);
     } catch (error) {
-      console.log(error);
+      toast.error("Senha ou usuario incorreto(s)");
     } finally {
       setLoading(false);
     }
@@ -70,7 +71,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       await api.post("/users", formData);
       navigate("/Login");
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado,tente novamente !")
     } finally {
       setLoading(false);
     }
