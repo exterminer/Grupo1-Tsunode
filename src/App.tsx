@@ -1,5 +1,6 @@
 import { RoutesMain } from "./routes/routes.tsx";
 import { NewsProvider } from "./providers/NewsContext/NewsContext.tsx";
+import { ToastContainer } from "react-toastify";
 
 import "./index.css";
 
@@ -9,6 +10,7 @@ function App() {
       <NewsProvider>
         <main className="">
           <RoutesMain />
+          <ToastContainer/>
         </main>
       </NewsProvider>
     </div>

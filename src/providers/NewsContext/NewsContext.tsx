@@ -5,7 +5,8 @@ import {
   ReactNode,
   useContext,
 } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../service/api";
 import { INewsContext, INews } from "./@types";
@@ -25,33 +26,38 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
 
   const token = localStorage.getItem("@TOKEN");
 
-  const like = async (userId: number, id:number) => {
+  const like = async (userId: number, id: number) => {
     try {
       const body = {
-        "userId": userId,
-        "postId": id
-      }
+        userId: userId,
+        postId: id,
+      };
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      await api.post("/likes", body, { headers })
-      getSpecificNews(id)
-    } catch (error) { 
-      console.log(error);
-    }  
-  }
+      await api.post("/likes", body, { headers });
+      getSpecificNews(id);
+    } catch (error) {
+      toast.error("Para interagir com  a publicaçao é necessario estar logado");
+      navigate("/login")
+    }
+  };
 
-  const deslike = async (id:number|undefined , postId:number|undefined) => {
+  const deslike = async (
+    id: number | undefined,
+    postId: number | undefined
+  ) => {
     try {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      await api.delete(`/likes/${id}`, { headers })
-      getSpecificNews(postId)
-    } catch (error) { 
-      console.log(error);
-    }  
-  }
+      await api.delete(`/likes/${id}`, { headers });
+      getSpecificNews(postId);
+    } catch (error) {
+      toast.error("Para curtir a publicaçao é necessario estar logado");
+      navigate("/login")
+    }
+  };
 
   const getNews = async () => {
     try {
@@ -158,7 +164,7 @@ export const NewsProvider = ({ children }: { children: ReactNode }) => {
         currentID,
         setCurrentID,
         like,
-        deslike
+        deslike,
       }}
     >
       {children}
