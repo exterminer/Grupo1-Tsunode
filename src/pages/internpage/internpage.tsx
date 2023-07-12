@@ -22,7 +22,7 @@ export const InternPage = () => {
   };
 
   return (
-    <div className="min-h-[100vh]">
+    <div className="min-h-[100vh] relative">
       <Header />
       <div className=" flex flex-col items-center gap-[20px] py-[16px] px-[20px]">
         <p className="text-black text-base font-inter font-normal">

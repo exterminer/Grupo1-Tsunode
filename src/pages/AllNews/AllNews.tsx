@@ -9,7 +9,7 @@ export const AllNews = () => {
   const { newslist } = useContext(NewsContext);
 
   return (
-    <div className="min-h-[100vh]">
+    <div className="min-h-[100vh]  relative">
       <Header />
       <div className="py-[16px] px-[20px]">
         <h2 className="text-black text-xl font-bold font-lora mb-[15px]">
